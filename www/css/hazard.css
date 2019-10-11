@@ -1,0 +1,7 @@
+#post_pic, #view_pic {
+  display: block;
+  margin: 0px auto;
+  width:  200px;
+  height: 200px;
+  border: 1px solid #ccc;
+}

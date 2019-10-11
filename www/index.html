@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+<!--        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+<!--        <meta name="format-detection" content="telephone=no">-->
+<!--        <meta name="msapplication-tap-highlight" content="no">-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.2/jquery.mobile-1.1.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.2/jquery.mobile-1.1.2.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/hazard.css">
+        <script type="text/javascript" src="js/hazard.js"></script>
+        <title>Hazard Reporter</title>
+    </head>
+    <body>
+    <!-- home page -->
+    <div data-role="page" id="home">
+        <div data-role="header" data-position="fixed">
+            <h1>Hazard Reporter</h1>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview" id="itemlists" data-theme="e">
+                <li data-role="list-divider">Reported Hazard</li>
+            </ul><br><br>
+
+        </div>
+
+        <div data-role="footer" class="ui-bar" data-position="fixed">
+            <a href="#" data-icon="refresh" id="refresh">Refresh</a>
+            <a href="#reporthazard" data-icon="plus" id="report" data-theme="b" >Report</a>
+        </div>
+    </div>
+
+    <!-- hazard view -->
+    <div data-role="page" id="view">
+        <div data-role="header" data-position="fixed" >
+            <h1>Hazard Reporter</h1>
+        </div>
+
+        <div data-role="content" data-theme="c">
+            <ul data-role="listview" id="viewlist">
+            </ul>
+            <img id="view_pic"/>
+        </div>
+
+        <div data-role="footer" class="ui-bar" data-position="fixed">
+            <a href="#popupbasic" data-icon="delete" data-theme="e" data-transition="pop">Remove</a>
+        </div>
+    </div>
+
+
+    <!-- report page -->
+    <div data-role="page" id="reporthazard">
+        <div data-role="header" data-position="inline">
+            <h1>Hazard Reporter</h1>
+        </div>
+
+        <div data-role="content" data-theme="c">
+            <h3>Report Hazard</h3>
+            <form >
+                <label for="location">Location</label>
+                <input type="text" name="name" id="location" value=""/>
+                <label for="textarea-a">Behavior of hazard</label>
+                <textarea name="textarea" id="textarea-a"></textarea>
+                <fieldset data-role="controlgroup" data-mini="true">
+                    <input type="radio" name="radio-mini" id="radio-mini-1" value="Can be avoid" checked="checked" />
+                    <label for="radio-mini-1">Can be avoid</label>
+
+                    <input type="radio" name="radio-mini" id="radio-mini-2" value="Need attention!"  />
+                    <label for="radio-mini-2">Need attention!</label>
+
+                    <input type="radio" name="radio-mini" id="radio-mini-3" value="Avoid this area!!"  />
+                    <label for="radio-mini-3">Avoid this area!!</label>
+
+                    <input type="radio" name="radio-mini" id="radio-mini-4" value="Emergency fix required!!!"  />
+                    <label for="radio-mini-4">Emergency fix required!!!</label>
+                </fieldset>
+                <img id="post_pic"/>
+
+            </form>
+        </div>
+
+        <div data-role="footer" class="ui-bar" data-position="fixed">
+            <a href="#" data-role="button" data-theme="b" data-icon="check" id="btn_submit">Submit</a>
+            <a href="#" data-role="button" data-theme="e" id="btn_takepicture">Take picture</a>
+            <a href="#" data-role="button" data-theme="a" id="btn_clear">Clear</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="popupbasic" data-dialog="true" data-close-btn="left">
+        <div data-role="header" data-position="inline">
+            <h1>Remove?</h1>
+        </div>
+        <div data-role="content">
+            <p>Are you sure? do you want to remove this hazard?</p>
+            <a data-rel="back" data-role="button">Cancel</a>
+            <button id="removehazard">Yes</button>
+        </div>
+
+    </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
